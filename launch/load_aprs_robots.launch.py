@@ -74,6 +74,26 @@ def launch_setup(context, *args, **kwargs):
             {"use_sim_time": True},
         ],
     )
+    
+    franka_controller = Node(
+        package="controller_manager",
+        executable="spawner",
+        name="franka_controller_spawner",
+        arguments=["franka_joint_trajectory_controller"],
+        parameters=[
+            {"use_sim_time": True},
+        ],
+    )
+    
+    motoman_controller = Node(
+        package="controller_manager",
+        executable="spawner",
+        name="motoman_controller_spawner",
+        arguments=["motoman_joint_trajectory_controller"],
+        parameters=[
+            {"use_sim_time": True},
+        ],
+    )
 
     nodes_to_start = [
         gz,
@@ -81,7 +101,9 @@ def launch_setup(context, *args, **kwargs):
         gz_spawn_entity,
         joint_state_broadcaster,
         ur_controller,
-        fanuc_controller
+        fanuc_controller,
+        franka_controller,
+        motoman_controller
     ]
 
     return nodes_to_start
