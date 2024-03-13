@@ -14,6 +14,8 @@ install(
   meshes  
   urdf
   launch
+  gz_models
+  worlds
   DESTINATION share/${PROJECT_NAME}
 )
 

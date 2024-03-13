@@ -16,8 +16,6 @@
   <exec_depend>urdf</exec_depend>
   <exec_depend>xacro</exec_depend>
   
-  <build_depend>franka_description</build_depend>
-
   <export>
     <build_type>ament_cmake</build_type>
   </export>

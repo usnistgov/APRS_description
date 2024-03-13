@@ -30,18 +30,20 @@ def launch_setup(context, *args, **kwargs):
         parameters=[{"use_sim_time": True}, robot_description],
     )
 
+    world_path = os.path.join(get_package_share_directory('aprs_description'), 'worlds', 'lab.sdf')
+    
     gz = IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
                 [os.path.join(get_package_share_directory('ros_gz_sim'),
                               'launch', 'gz_sim.launch.py')]),
-            launch_arguments=[('gz_args', [' -r -v 4 empty.sdf'])])
+            launch_arguments=[('gz_args', [' -r -v 4 '+world_path])])
 
     gz_spawn_entity = Node(
         package='ros_gz_sim',
         executable='create',
         output='screen',
         arguments=['-string', doc.toxml(),
-                   '-name', 'ur',
+                   '-name', 'aprs_robots',
                    '-allow_renaming', 'true'],
     )
     
@@ -97,13 +99,13 @@ def launch_setup(context, *args, **kwargs):
 
     nodes_to_start = [
         gz,
-        robot_state_publisher_node,
-        gz_spawn_entity,
-        joint_state_broadcaster,
-        ur_controller,
-        fanuc_controller,
-        franka_controller,
-        motoman_controller
+        # robot_state_publisher_node,
+        # gz_spawn_entity,
+        # joint_state_broadcaster,
+        # ur_controller,
+        # fanuc_controller,
+        # franka_controller,
+        # motoman_controller
     ]
 
     return nodes_to_start
