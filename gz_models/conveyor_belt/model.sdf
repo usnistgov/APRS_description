@@ -11,6 +11,9 @@
           <box>
             <size> 3.048 0.635 0.904875 </size>
           </box>
+          <!-- <mesh>
+            <uri>model://conveyor_belt/meshes/revised_conveyor.stl</uri>
+          </mesh> -->
         </geometry>
         <material>
             <ambient>0.0 0.0 0.0 1.0</ambient>
@@ -19,10 +22,10 @@
       </visual>
 
       <collision name="conveyor_belt_collision">
-        <pose>0 0 0.5 0 0 0</pose>
+        <pose>-0.14605 -0.625475 0.4524375 0 0 0</pose>
         <geometry>
           <box>
-            <size> 1 1 1 </size>
+            <size> 3.048 0.635 0.904875 </size>
           </box>
         </geometry>
       </collision>

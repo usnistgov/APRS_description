@@ -2,6 +2,6 @@ joint_b: 0.0
 joint_e: -1.57
 joint_l: 0.0
 joint_r: -1.57
-joint_s: 0.0
-joint_t: -1.57
-joint_u: 0.0
+joint_s: -1.57
+joint_t: 0.0
+joint_u: 1.57

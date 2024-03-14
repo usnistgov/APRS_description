@@ -36,7 +36,7 @@ def launch_setup(context, *args, **kwargs):
             PythonLaunchDescriptionSource(
                 [os.path.join(get_package_share_directory('ros_gz_sim'),
                               'launch', 'gz_sim.launch.py')]),
-            launch_arguments=[('gz_args', [' -r -v 4 '+world_path])])
+            launch_arguments=[('gz_args', [' -r -v 4 '+ world_path])])
 
     gz_spawn_entity = Node(
         package='ros_gz_sim',
@@ -102,9 +102,9 @@ def launch_setup(context, *args, **kwargs):
         robot_state_publisher_node,
         gz_spawn_entity,
         joint_state_broadcaster,
-        # ur_controller,
+        ur_controller,
         fanuc_controller,
-        # franka_controller,
+        franka_controller,
         motoman_controller
     ]
 
