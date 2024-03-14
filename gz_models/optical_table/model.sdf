@@ -6,7 +6,7 @@
     <link name="optical_table_link">
 
       <visual name="optical_table_visual">
-        <pose>0 0.9271 0.422275 0 0 0</pose>
+        <pose>-0.1000125 0.320675 0.422275 0 0 0</pose>
         <geometry>
           <box>
             <size> 2.4384 1.2192 0.84455 </size>

@@ -6,7 +6,7 @@
     <link name="conveyor_belt_link">
 
       <visual name="conveyor_belt_visual">
-        <pose>0 0 0.4524375 0 0 0</pose>
+        <pose>-0.14605 -0.625475 0.4524375 0 0 0</pose>
         <geometry>
           <box>
             <size> 3.048 0.635 0.904875 </size>

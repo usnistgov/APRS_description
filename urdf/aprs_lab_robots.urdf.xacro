@@ -16,19 +16,19 @@
   </joint>
 
   <joint name = "fanuc_world_to_base" type = "fixed">
-    <origin rpy = "0 0 0" xyz = "0 10 0"/>
+    <origin rpy = "0 0 0" xyz = "-0.5222875 -0.073025 0.84455"/>
     <parent link = "world"/>
     <child link = "aprs_fanuc_base_link"/>
   </joint>
 
-  <joint name = "franka_world_to_base" type = "fixed">
+  <!-- <joint name = "franka_world_to_base" type = "fixed">
     <origin rpy = "0 0 0" xyz = "0 0 0"/>
     <parent link = "world"/>
     <child link = "aprs_franka_base_link"/>
-  </joint>
+  </joint> -->
 
   <joint name = "motoman_world_to_base" type = "fixed">
-    <origin rpy = "0 0 0" xyz = "10 10 0"/>
+    <origin rpy = "0 0 3.14159" xyz = "0.4953 -0.08255 0.84455"/>
     <parent link = "world"/>
     <child link = "aprs_motoman_base_link"/>
   </joint>
@@ -43,15 +43,15 @@
     <!-- ROS2 Control Plugin -->
   <xacro:arg name="controllers" default="$(find aprs_description)/config/robot_controllers.yaml" />
 
-  <xacro:aprs_ur
+  <!-- <xacro:aprs_ur
     parent="aprs_ur_base_link">
-  </xacro:aprs_ur>
+  </xacro:aprs_ur> -->
 
   <xacro:aprs_fanuc
     parent="aprs_fanuc_base_link">
   </xacro:aprs_fanuc>
 
-  <xacro:aprs_franka></xacro:aprs_franka>
+  <!-- <xacro:aprs_franka></xacro:aprs_franka> -->
 
   <xacro:aprs_motoman
     parent="aprs_motoman_base_link">
@@ -66,4 +66,3 @@
   </gazebo>
 
 </robot>
-

@@ -99,13 +99,13 @@ def launch_setup(context, *args, **kwargs):
 
     nodes_to_start = [
         gz,
-        # robot_state_publisher_node,
-        # gz_spawn_entity,
-        # joint_state_broadcaster,
+        robot_state_publisher_node,
+        gz_spawn_entity,
+        joint_state_broadcaster,
         # ur_controller,
-        # fanuc_controller,
+        fanuc_controller,
         # franka_controller,
-        # motoman_controller
+        motoman_controller
     ]
 
     return nodes_to_start

@@ -6,7 +6,7 @@
     <link name="franka_cart_link">
 
       <visual name="franka_cart_visual">
-        <pose>1 -1.2 0.41989375 0 0 0</pose>
+        <pose>1 -1.375 0.41989375 0 0 0</pose>
         <geometry>
           <box>
             <size> 0.9890125 0.6746875 0.8397875 </size>
