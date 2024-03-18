@@ -13,7 +13,8 @@
 
   <xacro:include filename="$(find aprs_description)/urdf/motoman/aprs_motoman_macro.xacro"/>
     <!-- ROS2 Control Plugin -->
-  <xacro:arg name="controllers" default="$(find aprs_description)/config/robot_controllers.yaml" />
+  <xacro:arg name="controllers" default="$(find aprs_description)/config/individual_controllers/motoman_controller.yaml" />
+  <!-- <xacro:arg name="controllers" default="$(find aprs_description)/config/robot_controllers.yaml" /> -->
 
   <xacro:aprs_motoman
     parent="aprs_motoman_base_link">
@@ -22,6 +23,8 @@
   <gazebo>
     <plugin filename="libgz_ros2_control-system.so" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
       <ros>
+        <namespace>motoman</namespace>
+        <remapping>/controller_manager:=/motoman_controller/controller_manager</remapping>
       </ros>
       <parameters>$(arg controllers)</parameters>
     </plugin>
