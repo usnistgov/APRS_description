@@ -23,7 +23,7 @@ Loads the robots from the APRS lab in Gazebo Harmonic Running Iron
 
 * Clone the package
 
-    `git clone https://github.com/jaybrecht/aprs_description.git src/aprs_description`
+    `git clone https://github.com/usnistgov/aprs_description.git src/aprs_description`
 
 * Set the resource path
 
