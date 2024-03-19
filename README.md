@@ -25,6 +25,9 @@ Loads the robots from the APRS lab in Gazebo Harmonic Running Iron
 
     `git clone https://github.com/jaybrecht/aprs_description.git src/aprs_description`
 
+* Set the resource path
+
+    `export GZ_SIM_RESOURCE_PATH=/home/ubuntu/aprs_ws/install/ur_description/share/:/home/ubuntu/aprs_ws/install/aprs_description/share/aprs_description/gz_models/:/home/ubuntu/aprs_ws/install/aprs_description/share`
 
 * Build the workspace
 
