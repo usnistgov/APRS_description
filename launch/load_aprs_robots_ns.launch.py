@@ -14,16 +14,7 @@ from ament_index_python.packages import get_package_share_directory
 
 def launch_setup(context, *args, **kwargs):
     robot_names = ["fanuc", "franka", "motoman", "ur"]
-
-    # urdf = os.path.join(get_package_share_directory('aprs_description'), 'urdf', 'aprs_lab_robots.urdf.xacro')
-    
-    # doc = xacro.process_file(urdf)
-
-    # robot_description_content = doc.toprettyxml(indent='  ')
-
-    # print(robot_description_content)
-
-    # robot_description = {"robot_description": robot_description_content}
+    # robot_names = ["fanuc","franka"]
 
     robot_urdf_docs = {name:xacro.process_file(os.path.join(get_package_share_directory('aprs_description'), 'urdf', f'aprs_{name}.urdf.xacro')) for name in robot_names}
     robot_descriptions = {name:{"robot_description":robot_urdf_docs[name].toprettyxml(indent='  ')} for name in robot_names}
@@ -33,17 +24,10 @@ def launch_setup(context, *args, **kwargs):
         robot_state_publishers.append(Node(
             package="robot_state_publisher",
             executable="robot_state_publisher",
-            namespace=f"{robot_name}",
+            namespace=robot_name,
             output="both",
             parameters=[{"use_sim_time": True}, robot_descriptions[robot_name]],
         ))
-
-    # robot_state_publisher_node = Node(
-    #     package="robot_state_publisher",
-    #     executable="robot_state_publisher",
-    #     output="both",
-    #     parameters=[{"use_sim_time": True}, robot_description],
-    # )
 
     world_path = os.path.join(get_package_share_directory('aprs_description'), 'worlds', 'lab.sdf')
     
@@ -65,24 +49,26 @@ def launch_setup(context, *args, **kwargs):
                     '-name', f'aprs_{robot_name}',
                     '-allow_renaming', 'true'],
         ))
-
-    # gz_spawn_entity = Node(
-    #     package='ros_gz_sim',
-    #     executable='create',
-    #     output='screen',
-    #     arguments=['-string', doc.toxml(),
-    #                '-name', 'aprs_robots',
-    #                '-allow_renaming', 'true'],
-    # )
+    
+    joint_state_broadcasters = []
+    for robot_name in robot_names:
+        joint_state_broadcasters.append(Node(
+            package="controller_manager",
+            executable="spawner",
+            name=f"{robot_name}_joint_state_broadcaster_spawner",
+            arguments=["joint_state_broadcaster","-c", f"/{robot_name}/controller_manager"],
+            parameters=[
+                {"use_sim_time": True},
+            ],
+        ))
     
     controller_spawner_nodes = []
     for robot_name in robot_names:
         controller_spawner_nodes.append(Node(
             package="controller_manager",
             executable="spawner",
-            name=f"controller_manager",
-            namespace=f"{robot_name}",
-            arguments=[f"{robot_name}_controller"],
+            name=f"{robot_name}_controller_spawner",
+            arguments=["joint_trajectory_controller", "-c", f"/{robot_name}/controller_manager"],
             parameters=[
                 {"use_sim_time": True},
             ],
@@ -92,9 +78,10 @@ def launch_setup(context, *args, **kwargs):
         gz,
         *controller_spawner_nodes,
         *robot_state_publishers,
-        *gz_spawners
+        *gz_spawners,
+        *joint_state_broadcasters
     ]
-
+    print(len(nodes_to_start))
     return nodes_to_start
 
 

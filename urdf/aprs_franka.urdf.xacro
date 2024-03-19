@@ -11,8 +11,8 @@
 
   <xacro:include filename="$(find aprs_description)/urdf/franka/aprs_franka_macro.xacro"/>
     <!-- ROS2 Control Plugin -->
-  <xacro:arg name="controllers" default="$(find aprs_description)/config/individual_controllers/franka_controller.yaml" />
-  <!-- <xacro:arg name="controllers" default="$(find aprs_description)/config/robot_controllers.yaml" /> -->
+  <!-- <xacro:arg name="franka_controller" default="$(find aprs_description)/config/individual_controllers/franka_controller.yaml" /> -->
+  <xacro:arg name="controllers" default="$(find aprs_description)/config/robot_controllers.yaml" />
 
   <xacro:aprs_franka></xacro:aprs_franka>
 
