@@ -12,8 +12,8 @@ from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
 
 def launch_setup(context, *args, **kwargs):
-    robot_names = ["fanuc", "franka", "motoman", "ur"]
-    # robot_names = ["fanuc","franka"]
+    # robot_names = ["fanuc", "franka", "motoman", "ur"]
+    robot_names = []
 
     robot_urdf_docs = {name:xacro.process_file(os.path.join(get_package_share_directory('aprs_description'), 'urdf', f'aprs_{name}.urdf.xacro')) for name in robot_names}
     robot_descriptions = {name:{"robot_description":robot_urdf_docs[name].toprettyxml(indent='  ')} for name in robot_names}
