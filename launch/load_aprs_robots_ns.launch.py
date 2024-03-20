@@ -7,7 +7,6 @@ from launch.actions import (
     OpaqueFunction,
 )
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch_ros.substitutions import FindPackageShare
 from launch_ros.actions import Node
 
 from ament_index_python.packages import get_package_share_directory
@@ -81,7 +80,6 @@ def launch_setup(context, *args, **kwargs):
         *gz_spawners,
         *joint_state_broadcasters
     ]
-    print(len(nodes_to_start))
     return nodes_to_start
 
 
