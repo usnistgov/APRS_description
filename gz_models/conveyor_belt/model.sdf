@@ -63,7 +63,7 @@
         <axis>
           <xyz>1 0 0</xyz>
           <limit>
-            <lower>0</lower>
+            <lower>-0.4</lower>
             <upper>0.4</upper>
             <effort>100</effort>
           </limit>
