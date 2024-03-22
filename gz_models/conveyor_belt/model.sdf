@@ -73,7 +73,7 @@
       <plugin
         filename="libConveyorPlugin.so"
         name="aprs_plugins::ConveyorPlugin">
-        <max_velocity>0.2</max_velocity>
+        <max_velocity>0.5</max_velocity>
       </plugin>
     
     </model>
