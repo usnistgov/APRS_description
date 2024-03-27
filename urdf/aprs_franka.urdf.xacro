@@ -20,7 +20,6 @@
     <plugin filename="libgz_ros2_control-system.so" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
       <ros>
         <namespace>franka</namespace>
-        <remapping>/controller_manager:=/franka/controller_manager</remapping>
       </ros>
       <parameters>$(arg controllers)</parameters>
     </plugin>
