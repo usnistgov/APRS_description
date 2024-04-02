@@ -13,7 +13,7 @@ from ament_index_python.packages import get_package_share_directory
 
 def launch_setup(context, *args, **kwargs):
     robot_names = ["fanuc", "franka", "motoman", "ur"]
-    # robot_names = []
+    # robot_names = ["franka", "fanuc"]
 
     robot_urdf_docs = {name:xacro.process_file(os.path.join(get_package_share_directory('aprs_description'), 'urdf', f'aprs_{name}.urdf.xacro')) for name in robot_names}
     robot_descriptions = {name:{"robot_description":robot_urdf_docs[name].toprettyxml(indent='  ')} for name in robot_names}
@@ -61,13 +61,16 @@ def launch_setup(context, *args, **kwargs):
             ],
         ))
     
+    controller_path = get_package_share_directory('aprs_description')
+    controller_path+="/config/individual_controllers/franka_controller.yaml"
     controller_spawner_nodes = []
     for robot_name in robot_names:
         controller_spawner_nodes.append(Node(
             package="controller_manager",
             executable="spawner",
             name=f"{robot_name}_controller_spawner",
-            arguments=["joint_trajectory_controller", "-c", f"/{robot_name}/controller_manager"],
+            arguments=["joint_trajectory_controller", 
+                "-c", f"/{robot_name}/controller_manager"],
             parameters=[
                 {"use_sim_time": True},
             ],

@@ -26,6 +26,8 @@
         <namespace>motoman</namespace>
       </ros>
       <parameters>$(arg controllers)</parameters>
+      <load_params_directly>true</load_params_directly>
+      <controller name="joint_trajectory_controller" params_file="/home/ubuntu/aprs_ws/install/aprs_description/share/aprs_description/config/ns_robot_controllers.yaml"/>
     </plugin>
   </gazebo>
 
