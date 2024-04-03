@@ -11,8 +11,8 @@
 
   <xacro:include filename="$(find aprs_description)/urdf/franka/aprs_franka_macro.xacro"/>
     <!-- ROS2 Control Plugin -->
-  <!-- <xacro:arg name="franka_controller" default="$(find aprs_description)/config/individual_controllers/franka_controller.yaml" /> -->
-  <xacro:arg name="controllers" default="$(find aprs_description)/config/ns_robot_controllers.yaml" />
+  <xacro:arg name="franka_controller" default="$(find aprs_description)/config/individual_controllers/franka_controller.yaml" />
+  <!-- <xacro:arg name="controllers" default="$(find aprs_description)/config/ns_robot_controllers.yaml" /> -->
 
   <xacro:aprs_franka></xacro:aprs_franka>
 
@@ -21,9 +21,9 @@
       <ros>
         <namespace>franka</namespace>
       </ros>
-      <parameters>$(arg controllers)</parameters>
+      <parameters>$(arg franka_controller)</parameters>
       <load_params_directly>true</load_params_directly>
-      <controller name="joint_trajectory_controller" params_file="/home/ubuntu/aprs_ws/install/aprs_description/share/aprs_description/config/ns_robot_controllers.yaml"/>
+      <controller name="joint_trajectory_controller" params_file="$(find aprs_description)/config/individual_controllers/franka_controller.yaml"/>
     </plugin>
   </gazebo>
 

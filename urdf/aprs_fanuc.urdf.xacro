@@ -13,8 +13,8 @@
 
   <xacro:include filename="$(find aprs_description)/urdf/fanuc/aprs_fanuc_macro.xacro"/>
   
-  <!-- <xacro:arg name="fanuc_controller" default="$(find aprs_description)/config/individual_controllers/fanuc_controller.yaml" /> -->
-  <xacro:arg name="controllers" default="$(find aprs_description)/config/ns_robot_controllers.yaml" />
+  <xacro:arg name="fanuc_controller" default="$(find aprs_description)/config/individual_controllers/fanuc_controller.yaml" />
+  <!-- <xacro:arg name="controllers" default="$(find aprs_description)/config/ns_robot_controllers.yaml" /> -->
 
   <xacro:aprs_fanuc
     parent="aprs_fanuc_base_link">
@@ -25,9 +25,9 @@
       <ros>
         <namespace>fanuc</namespace>
       </ros>
-      <parameters>$(arg controllers)</parameters>
+      <parameters>$(arg fanuc_controller)</parameters>
       <load_params_directly>true</load_params_directly>
-      <controller name="joint_trajectory_controller" params_file="/home/ubuntu/aprs_ws/install/aprs_description/share/aprs_description/config/ns_robot_controllers.yaml"/>
+      <controller name="joint_trajectory_controller" params_file="$(find aprs_description)/config/individual_controllers/fanuc_controller.yaml"/>
     </plugin>
   </gazebo>
 
