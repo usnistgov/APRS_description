@@ -27,7 +27,7 @@ Loads the robots from the APRS lab in Gazebo Harmonic Running Iron
 
 * Clone the plugins package
 
-    `git clone https://github.com/usnistgov/aprs_plugins.git src/aprs_plugins`
+    `git clone https://github.com/jfernandez37/aprs_plugins.git src/aprs_plugins`
 
 * Remove the old gz_ros2_control package
 
