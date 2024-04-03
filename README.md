@@ -29,6 +29,10 @@ Loads the robots from the APRS lab in Gazebo Harmonic Running Iron
 
     `git clone https://github.com/jfernandez37/aprs_plugins.git src/aprs_plugins`
 
+* Clone the conveyor package
+
+    `git clone https://github.com/usnistgov/aprs-ros-conveyor.git src/aprs_ros_conveyor`
+
 * Remove the old gz_ros2_control package
 
     `rm -rf src/gz_ros2_control`
