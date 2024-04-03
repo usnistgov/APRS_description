@@ -55,4 +55,4 @@ Loads the robots from the APRS lab in Gazebo Harmonic Running Iron
 
 * Launch the environment with the robots
 
-    `ros2 launch aprs_description load_aprs_robots.launch.py `
+    `ros2 launch aprs_description load_aprs_robots.launch_ns.py `
