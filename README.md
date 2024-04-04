@@ -53,6 +53,10 @@ Loads the robots from the APRS lab in Gazebo Harmonic Running Iron
 
     `. install/setup.bash`
 
-* Launch the environment with the robots
+* Launch the environment with the robots in the same namespace
 
-    `ros2 launch aprs_description load_aprs_robots.launch_ns.py `
+    `ros2 launch aprs_description load_aprs_robots.launch.py`
+  
+* Launch the environment with the robots in different namespaces
+
+    `ros2 launch aprs_description load_aprs_robots_ns.launch.py`
