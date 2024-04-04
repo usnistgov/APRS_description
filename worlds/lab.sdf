@@ -111,5 +111,15 @@
       <pose>0 0 0 0 0 0</pose>
       <uri>model://work_area</uri>
     </include>
+    <include>
+      <name>walls</name>
+      <pose>0 0 0 0 0 0</pose>
+      <uri>model://walls</uri>
+    </include>
+    <include>
+      <name>light_bars</name>
+      <pose>0 0 0 0 0 0</pose>
+      <uri>model://light_bars</uri>
+    </include>
   </world>
 </sdf>
