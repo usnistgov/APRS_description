@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+    <xacro:macro name="franka_cart" params="
+    parent
+    x_rail_length
+    x_rail_width
+    x_rail_offset
+    y_rail_length
+    y_rail_width
+    rail_height
+    rail_thickness
+    cart_height
+    initial_positions">
+        <xacro:include filename="$(find aprs_description)/urdf/franka/franka_cart.ros2_control.xacro"/>
+        <xacro:franka_cart_ros2_control
+            name = "franka_cart"
+            initial_positions="${initial_positions}"/>
+            <link name='x_rail'>
+                <collision>
+                    <origin xyz="0 ${x_rail_offset} ${rail_height}" rpy="0 0 0"/>
+                    <geometry>
+                    <box size="${x_rail_width} ${x_rail_length} ${rail_thickness}"/>
+                    </geometry>
+                </collision>
+                <visual>
+                    <origin xyz="0 ${x_rail_offset} ${rail_height}" rpy="0 0 0"/>
+                    <geometry>
+                        <box size="${x_rail_width} ${x_rail_length} ${rail_thickness}"/>
+                    </geometry>
+                    <material name="Grey"/>
+                </visual>
+                <inertial>
+                    <origin xyz="0 0 0" rpy="0 0 0"/>
+                    <mass value="1.0"/>
+                    <inertia
+                        ixx="1" ixy="0.0" ixz="0.0"
+                        iyy="1" iyz="0.0"
+                        izz="1"/>
+                </inertial>
+            </link>
+            
+            <gazebo reference="x_rail">
+                <material>Gazebo/DarkGrey</material>
+            </gazebo>
+          
+            <joint name="x_rail_world" type="fixed">
+                <parent link="${parent}"/>
+                <child link="x_rail"/>
+                <origin xyz="-2.0 0.0 0.0" rpy="0.0 0.0 ${-pi/2}"/>
+            </joint>
+          
+            <link name='y_rail'>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                <box size="${y_rail_width} ${y_rail_length} ${rail_thickness}"/>
+                </geometry>
+            </collision>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                <box size="${y_rail_width} ${y_rail_length} ${rail_thickness}"/>
+                </geometry>
+                <material name="Grey"/>
+            </visual>
+            <inertial>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <mass value="1.0"/>
+                <inertia
+                    ixx=".1" ixy="0.0" ixz="0.0"
+                    iyy="1" iyz="0.0"
+                    izz=".1"/>
+            </inertial>
+            </link>
+            
+            <gazebo reference="y_rail">
+                <material>Gazebo/GreyTransparent</material>
+            </gazebo>
+        
+            <joint name="franka_cart_x_axis_joint" type="prismatic">
+            <parent link="x_rail"/>
+            <child link="y_rail"/>
+            <origin xyz="0.0 -5.0 ${rail_height + rail_thickness}" rpy="0.0 0.0 ${pi/2}"/>
+            <axis xyz="1 0 0"/>
+            <limit lower="${-x_rail_length / 2 + y_rail_width / 2}"
+                upper="${x_rail_length / 2 - y_rail_width / 2}"
+                velocity="1"
+                effort="100000"/>
+            </joint>
+            
+            <link name="franka_cart_link">
+
+                <visual name="franka_cart_visual">
+                  <pose>-1 -1.375 0.41989375 0 0 0</pose>
+                  <geometry>
+                    <box>
+                      <size> 0.9890125 0.6746875 0.8397875 </size>
+                    </box>
+                  </geometry>
+                  <material>
+                      <ambient>0.0 0.0 0.0 1.0</ambient>
+                      <diffuse>0.5 0.5 0.5 1.0</diffuse>
+                  </material>
+                </visual>
+          
+                <collision name="franka_cart_collision">
+                  <pose>-1 -1.375 0.41989375 0 0 0</pose>
+                  <geometry>
+                    <box>
+                      <size> 0.9890125 0.6746875 0.8397875 </size>
+                    </box>
+                  </geometry>
+                </collision>
+          
+              </link>
+        
+            <gazebo reference="franka_cart_link">
+                <material>Gazebo/FlatBlack</material>
+                <selfCollide>1</selfCollide>
+            </gazebo>
+        
+            <joint name="franka_cart_y_axis_joint" type="prismatic">
+            <parent link="y_rail"/>
+            <child link="franka_cart"/>
+            <origin xyz="0 0 ${cart_height}" rpy="${pi} ${pi} ${pi/2}"/>
+            <axis xyz="1 0 0"/>
+            <!--Add a 0.5m buffer for joint limits to avoid self-collisions-->
+            <limit lower="${-y_rail_length / 2 + .5}"
+                upper="${x_rail_length / 2 - .5}"
+                velocity="1"
+                effort="100000"/>
+            </joint>
+    </xacro:macro>
+</robot>

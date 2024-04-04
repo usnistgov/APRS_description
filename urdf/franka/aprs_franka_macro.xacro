@@ -13,6 +13,22 @@
 
     <xacro:include filename="$(find aprs_description)/urdf/franka/franka_hand.xacro" />
 
+    <xacro:include filename="$(find aprs_description)/urdf/franka/franka_cart_macro.xacro"/>
+
+    <xacro:franka_cart
+      parent="world"
+      x_rail_length="15.0"
+      x_rail_width="0.2"
+      x_rail_offset="-5.0"
+      y_rail_length="15.0"
+      y_rail_width="0.2"
+      rail_height="2.9"
+      rail_thickness="0.1"
+      cart_height="-2.3"
+      initial_positions="${xacro.load_yaml(initial_positions_file)}"
+      >
+    </xacro:franka_cart>
+
     <xacro:franka_arm 
       arm_id="fr3"
       gazebo="false"

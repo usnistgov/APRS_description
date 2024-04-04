@@ -5,3 +5,5 @@ fr3_joint4: -1.57
 fr3_joint5: 0.0
 fr3_joint6: 1.57
 fr3_joint7: 0.0
+franka_cart_x_axis_joint: 2
+franka_cart_y_axis_joint: 0
