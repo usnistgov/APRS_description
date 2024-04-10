@@ -86,7 +86,7 @@
         <falloff>0</falloff>
       </spot>
     </light>
-    <include>
+    <!-- <include>
       <name>optical_table</name>
       <pose>0 0 0 0 0 0</pose>
       <uri>model://optical_table</uri>
@@ -96,11 +96,11 @@
       <pose>0 0 0 0 0 0</pose>
       <uri>model://conveyor_belt</uri>
     </include>
-    <!-- <include>
+    <include>
       <name>franka_cart</name>
       <pose>0 0 0 0 0 0</pose>
       <uri>model://franka_cart</uri>
-    </include> -->
+    </include>
     <include>
       <name>ur_cart</name>
       <pose>0 0 0 0 0 0</pose>
@@ -120,6 +120,6 @@
       <name>light_bars</name>
       <pose>0 0 0 0 0 0</pose>
       <uri>model://light_bars</uri>
-    </include>
+    </include> -->
   </world>
 </sdf>

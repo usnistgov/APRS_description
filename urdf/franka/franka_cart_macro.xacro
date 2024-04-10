@@ -17,17 +17,20 @@
             initial_positions="${initial_positions}"/>
             <link name='x_rail'>
                 <collision>
-                    <origin xyz="0 ${x_rail_offset} ${rail_height}" rpy="0 0 0"/>
+                    <pose>-1.9601 -1.8161 1.1 0 0 0</pose>
                     <geometry>
-                    <box size="${x_rail_width} ${x_rail_length} ${rail_thickness}"/>
+                        <box>
+                            <size> 0.07 0.05 2 </size>
+                        </box>
                     </geometry>
                 </collision>
                 <visual>
-                    <origin xyz="0 ${x_rail_offset} ${rail_height}" rpy="0 0 0"/>
+                    <pose>-1.9601 -1.8161 1.1 0 0 0</pose>
                     <geometry>
-                        <box size="${x_rail_width} ${x_rail_length} ${rail_thickness}"/>
+                        <box>
+                            <size> 0.07 0.05 2 </size>
+                        </box>
                     </geometry>
-                    <material name="Grey"/>
                 </visual>
                 <inertial>
                     <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -39,8 +42,7 @@
                 </inertial>
             </link>
             
-            <gazebo reference="x_rail">
-                <material>Gazebo/DarkGrey</material>
+            <!-- <gazebo reference="x_rail">
             </gazebo>
           
             <joint name="x_rail_world" type="fixed">
@@ -53,15 +55,18 @@
             <collision>
                 <origin xyz="0 0 0" rpy="0 0 0"/>
                 <geometry>
-                <box size="${y_rail_width} ${y_rail_length} ${rail_thickness}"/>
+                    <box>
+                        <size> 0.1 0.1 0.1 </size>
+                    </box>
                 </geometry>
             </collision>
             <visual>
                 <origin xyz="0 0 0" rpy="0 0 0"/>
                 <geometry>
-                <box size="${y_rail_width} ${y_rail_length} ${rail_thickness}"/>
+                    <box>
+                        <size> 0.1 0.1 0.1 </size>
+                    </box>
                 </geometry>
-                <material name="Grey"/>
             </visual>
             <inertial>
                 <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -74,7 +79,6 @@
             </link>
             
             <gazebo reference="y_rail">
-                <material>Gazebo/GreyTransparent</material>
             </gazebo>
         
             <joint name="franka_cart_x_axis_joint" type="prismatic">
@@ -124,11 +128,11 @@
             <child link="franka_cart"/>
             <origin xyz="0 0 ${cart_height}" rpy="${pi} ${pi} ${pi/2}"/>
             <axis xyz="1 0 0"/>
-            <!--Add a 0.5m buffer for joint limits to avoid self-collisions-->
+            Add a 0.5m buffer for joint limits to avoid self-collisions
             <limit lower="${-y_rail_length / 2 + .5}"
                 upper="${x_rail_length / 2 - .5}"
                 velocity="1"
                 effort="100000"/>
-            </joint>
+            </joint> -->
     </xacro:macro>
 </robot>
