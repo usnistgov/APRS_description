@@ -8,7 +8,7 @@
   <link name="aprs_fanuc_base_link"/>
 
   <link name="aprs_motoman_base_link"/>
-
+  
   <joint name = "ur_world_to_base" type = "fixed">
     <origin rpy = "0 0 0" xyz = "0.7864625 -1.375 0.8001"/>
     <parent link = "world"/>

@@ -6,7 +6,7 @@
     <link name="ur_cart_link">
 
       <visual name="ur_cart_visual">
-        <pose>1 -1.375 0.40005 0 0 0</pose>
+        <pose>-0.75 -0.7 0.41989375 0 0 0</pose>
         <geometry>
           <box>
             <size> 0.727075 0.644525 0.8001 </size>

@@ -91,11 +91,11 @@
       <pose>0 0 0 0 0 0</pose>
       <uri>model://optical_table</uri>
     </include>
-    <include>
+    <!-- <include>
       <name>conveyor_belt</name>
       <pose>0 0 0 0 0 0</pose>
       <uri>model://conveyor_belt</uri>
-    </include>
+    </include> -->
     <include>
       <name>franka_cart</name>
       <pose>0 0 0 0 0 0</pose>
@@ -116,10 +116,15 @@
       <pose>0 0 0 0 0 0</pose>
       <uri>model://walls</uri>
     </include>
-    <include>
+    <!-- <include>
       <name>light_bars</name>
       <pose>0 0 0 0 0 0</pose>
       <uri>model://light_bars</uri>
-    </include>
+    </include> -->
+    <!-- <include>
+      <name>franka_ur_cart</name>
+      <pose>0 0 0 0 0 0</pose>
+      <uri>model://franka_ur_table</uri>
+    </include> -->
   </world>
 </sdf>
